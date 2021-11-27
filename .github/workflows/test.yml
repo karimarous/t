@@ -12,13 +12,13 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
-- name: Operations
-  uses: alinz/ssh-scp-action@master
-  with:
-    key: ${{ secrets.SSH_PRIVATE_KEY }}
-    host: 54.226.145.239
-    port: 22
-    user: ec2-user
+    - name: Operations
+      uses: alinz/ssh-scp-action@master
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: 54.226.145.239
+        port: 22
+        user: ec2-user
     # runs this on remove server
-    ssh_before: |
-      ls -la
+        ssh_before: |
+          ls -la
