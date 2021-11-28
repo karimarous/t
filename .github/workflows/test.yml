@@ -18,6 +18,7 @@ jobs:
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
+        name: github-actions
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         known_hosts: 54.226.145.239
         if_key_exists: replace 
