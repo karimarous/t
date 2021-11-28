@@ -16,11 +16,11 @@ jobs:
       uses: alinz/ssh-scp-action@master
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        host: 3.88.142.183
+        host: ${{ secrets.SSH_HOST }}
         port: 22
         user: ec2-user
         scp: |
-          1 ec2-user@3.88.142.183:/home/ec2-user
+          1 ec2-user@${{ secrets.SSH_HOST }}:/home/ec2-user
         ssh_after: |
           ls -la
-          curl http://169.254.169.254/latest/meta-data/local-ipv4
+          curl http://${{ secrets.SSH_HOST }}/latest/meta-data/local-ipv4
