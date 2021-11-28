@@ -24,3 +24,13 @@ jobs:
         remote_host: 54.226.145.239
         remote_user: ec2-user
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: 54.226.145.239
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}  
+        port: 22
+        source: "tt"
+        target: "/home/ec2-user"
