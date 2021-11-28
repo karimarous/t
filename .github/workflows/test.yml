@@ -17,12 +17,16 @@ jobs:
     
 
 
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@master
+    - name: Operations
+      uses: alinz/ssh-scp-action@master
       with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         host: 54.226.145.239
-        username: ec2-user
-        key: ${{ secrets.SSH_PRIVATE_KEY }}  
         port: 22
-        source: "./1"
-        target: "/home/ec2-user"
+        user: ec2-user
+        scp: |
+          tt ec2-user@54.226.145.239:/home/ec2-user
+          1 ec2-user@54.226.145.239:/home/ec2-user
+        ssh_after: |
+          ls -la
+          curl http://169.254.169.254/latest/meta-data/local-ipv4
