@@ -18,7 +18,7 @@ jobs:
     - name: rsync deployments
       uses: burnett01/rsync-deployments@5.1
       with:
-        switches: -avzr --delete
+        switches: -avz 
         path: ./tt
         remote_path: /home
         remote_host: 54.226.145.239
