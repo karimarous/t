@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
-    - name: tt
-      run: ls -al
     - name: Operations
       uses: alinz/ssh-scp-action@master
       with:
@@ -22,5 +20,5 @@ jobs:
         port: 22
         user: ec2-user
     # runs this on remove server
-        ssh_before: |
+        ssh_after: |
           ls -la
