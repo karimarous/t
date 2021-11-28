@@ -24,5 +24,5 @@ jobs:
         username: ec2-user
         key: ${{ secrets.SSH_PRIVATE_KEY }}  
         port: 22
-        source: "./tt"
+        source: "./1"
         target: "/home/ec2-user"
