@@ -15,15 +15,7 @@ jobs:
     - name: tt
       run:  curl http://169.254.169.254/latest/meta-data/local-ipv4
     
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@5.1
-      with:
-        switches: -avz 
-        path: ./tt
-        remote_path: /home
-        remote_host: 54.226.145.239
-        remote_user: ec2-user
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
 
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
