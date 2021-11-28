@@ -22,4 +22,4 @@ jobs:
         known_hosts: 54.226.145.239
         if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
     - name: rsync over ssh
-      run: rsync ./actions-runner 3.88.142.183:/home/ec2-user/
+      run: rsync ./tt 3.88.142.183:/home/ec2-user/
