@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v1
+    - name: tt
+      run:  curl http://169.254.169.254/latest/meta-data/local-ipv4
     - name: Operations
       uses: alinz/ssh-scp-action@master
       with:
@@ -22,3 +24,4 @@ jobs:
     # runs this on remove server
         ssh_after: |
           ls -la
+          curl http://169.254.169.254/latest/meta-data/local-ipv4
