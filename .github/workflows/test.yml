@@ -20,7 +20,6 @@ jobs:
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         known_hosts: 54.226.145.239
-        if_key_exists: ignore 
+        if_key_exists: replace 
     - name: rsync over ssh
       run: scp tt ec2-user@3.88.142.183:/home/ec2-user/ 
-      
