@@ -15,15 +15,15 @@ jobs:
     - name: tt
       run:  curl http://169.254.169.254/latest/meta-data/local-ipv4
     
-- name: scp ssh pipelines
-  uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-  env:
-    LASTSSH: "Doing something after copying"
-  with:
-    host: 54.226.145.239
-    user: ec2-user
-    pass: ${{ secrets.SSH_PRIVATE_KEY }}
-    scp: |
-      ./tt => /home/
-    last_ssh: |
-      ls -la
+    - name: scp ssh pipelines
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      env:
+        LASTSSH: "Doing something after copying"
+      with:
+        host: 54.226.145.239
+        user: ec2-user
+        pass: ${{ secrets.SSH_PRIVATE_KEY }}
+        scp: |
+          ./tt => /home/
+        last_ssh: |
+          ls -la
