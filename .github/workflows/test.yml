@@ -14,16 +14,12 @@ jobs:
       uses: actions/checkout@v1
     - name: tt
       run:  curl http://169.254.169.254/latest/meta-data/local-ipv4
-    - name: Operations
-      uses: alinz/ssh-scp-action@master
+    
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        host: 54.226.145.239
-        port: 22
-        user: ec2-user
-        ssh_before: |
-          curl http://169.254.169.254/latest/meta-data/local-ipv4
-          ls
-        ssh_after: |
-          ls -la
-          curl http://169.254.169.254/latest/meta-data/local-ipv4
+        known_hosts: 54.226.145.239
+        if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+    - name: rsync over ssh
+      run: rsync ./actions-runner 3.88.142.183:/home/ec2-user/
