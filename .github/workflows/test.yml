@@ -32,5 +32,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}  
         port: 22
-        source: "tt"
+        source: "/home/ec2-user/tt"
         target: "/home/ec2-user"
