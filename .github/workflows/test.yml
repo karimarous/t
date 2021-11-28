@@ -22,4 +22,5 @@ jobs:
         known_hosts: 54.226.145.239
         if_key_exists: ignore 
     - name: rsync over ssh
-      run: rsync ./tt 3.88.142.183:/home/ec2-user/
+      run: ls -al 
+      #rsync ./tt 3.88.142.183:/home/ec2-user/
