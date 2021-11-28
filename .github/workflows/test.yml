@@ -15,12 +15,15 @@ jobs:
     - name: tt
       run:  curl http://169.254.169.254/latest/meta-data/local-ipv4
     
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        name: github-actions
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        known_hosts: 54.226.145.239
-        if_key_exists: replace 
-    - name: rsync over ssh
-      run: scp tt ec2-user@3.88.142.183:/home/ec2-user/ 
+- name: scp ssh pipelines
+  uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+  env:
+    LASTSSH: "Doing something after copying"
+  with:
+    host: 54.226.145.239
+    user: ec2-user
+    pass: ${{ secrets.SSH_PRIVATE_KEY }}
+    scp: |
+      ./tt => /home/
+    last_ssh: |
+      ls -la
