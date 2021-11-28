@@ -21,7 +21,9 @@ jobs:
         host: 54.226.145.239
         port: 22
         user: ec2-user
-    # runs this on remove server
+        ssh_before: |
+          curl http://169.254.169.254/latest/meta-data/local-ipv4
+          ls
         ssh_after: |
           ls -la
           curl http://169.254.169.254/latest/meta-data/local-ipv4
